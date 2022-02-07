@@ -24,7 +24,6 @@ public class Dashboard extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         btn_book = findViewById(R.id.btn_book);
 
-
         btn_logout_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +38,19 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getApplicationContext(),SelectRoomActivity.class));
+                //grab the email passed in, keep passing it down to the next activity
+                String email="";
+
+                Bundle emailExtra = getIntent().getExtras();
+                if (emailExtra != null) {
+                    email = emailExtra.getString("EMAIL");
+                }
+
+                Intent i = new Intent(Dashboard.this, SelectRoomActivity.class);
+                emailExtra.putString("EMAIL",email);
+                i.putExtras(emailExtra);
+                startActivity(i);
+
                 finish();
             }
         });

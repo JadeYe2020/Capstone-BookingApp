@@ -23,9 +23,6 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yoga_calendar);
 
-
-
-
         calendarView = findViewById(R.id.calendarView);
         tv_date = findViewById(R.id.tv_date);
         btn_next = findViewById(R.id.btn_next);
@@ -52,6 +49,10 @@ public class CalendarActivity extends AppCompatActivity {
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
                     String roomName = extras.getString("KEY");
+                    String email = extras.getString("EMAIL");
+
+                    System.out.println("calendar");
+                    System.out.println(email);
 
                     if (roomName.equals("yoga")) {
 
@@ -63,6 +64,7 @@ public class CalendarActivity extends AppCompatActivity {
                         Intent i = new Intent(CalendarActivity.this, YogaRmActivity.class);
                         Bundle dateExtra = new Bundle();
                         dateExtra.putString("DATE",date);
+                        dateExtra.putString("EMAIL", email);
                         i.putExtras(dateExtra);
                         startActivity(i);
 
@@ -76,6 +78,7 @@ public class CalendarActivity extends AppCompatActivity {
                         Intent i = new Intent(CalendarActivity.this, WeightRmActivity.class);
                         Bundle dateExtra = new Bundle();
                         dateExtra.putString("DATE",date);
+                        dateExtra.putString("EMAIL", email);
                         i.putExtras(dateExtra);
                         startActivity(i);
 
@@ -90,6 +93,7 @@ public class CalendarActivity extends AppCompatActivity {
                         Intent i = new Intent(CalendarActivity.this, CardioRmActivity.class);
                         Bundle dateExtra = new Bundle();
                         dateExtra.putString("DATE",date);
+                        dateExtra.putString("EMAIL", email);
                         i.putExtras(dateExtra);
                         startActivity(i);
 
@@ -97,17 +101,27 @@ public class CalendarActivity extends AppCompatActivity {
                     }
                 }
 
-
-
-//                startActivity(new Intent(getApplicationContext(),YogaRmActivity.class));
-//                finish();
             }
         });
 
         btn_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),SelectRoomActivity.class));
+
+                String email="";
+
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    email = extras.getString("EMAIL");
+                }
+
+                //pass back to maintain email address
+                Intent i = new Intent(CalendarActivity.this, SelectRoomActivity.class);
+                extras.putString("EMAIL", email);
+                i.putExtras(extras);
+                startActivity(i);
+
+
                 finish();
             }
         });

@@ -51,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
 
 
+        //bool to check for auth
+        boolean isAuth = false;
+        //return true if auth
+        //then save et_email as var email. pass
+
+
+
 
 
         btn_create_account.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +81,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(AuthResult authResult) {
 
+                            //get email saved in var------------------------------------------------------
+                            String email = et_email.getText().toString();
                             //check for admin
-                            checkAccessLevel(authResult.getUser().getUid());
+                            checkAccessLevel(authResult.getUser().getUid(), email);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -101,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void checkAccessLevel(String uid) {
+    private void checkAccessLevel(String uid, String email) {
 
         DocumentReference docRef = fbStore.collection("Users").document(uid);  //find user by user id
 
@@ -126,7 +135,12 @@ public class MainActivity extends AppCompatActivity {
                 if(documentSnapshot.getString("isUser") != null){
 
                     //send to main dashboard activity
-                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                    Intent i = new Intent(MainActivity.this, Dashboard.class);
+                    Bundle emailExtra = new Bundle();
+                    emailExtra.putString("EMAIL",email);
+                    i.putExtras(emailExtra);
+                    startActivity(i);
+
                     //finish this activity
                     finish();
                 }
@@ -135,19 +149,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-//    //this auto log in user, need to pass it down other credentials current can only send both user/admin to same activity
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        //this is so out app automatically logs in if you have logged in before
-//        if(FirebaseAuth.getInstance().getCurrentUser() != null){
-//
-//
-//            startActivity(new Intent(getApplicationContext(),Dashboard.class));  //send to dashboard
-//            finish();
-//        }
-//    }
 }
 

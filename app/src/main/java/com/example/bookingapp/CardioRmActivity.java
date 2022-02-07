@@ -29,8 +29,12 @@ public class CardioRmActivity extends AppCompatActivity {
         Bundle dateExtra = getIntent().getExtras();
         if (dateExtra != null) {
             String date = dateExtra.getString("DATE");
-            System.out.println(date);
             tvDate.setText(date);
+            System.out.println(date);
+
+            String email = dateExtra.getString("EMAIL");
+            System.out.println(email);
+
         }
 
 
@@ -39,10 +43,21 @@ public class CardioRmActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String room = "cardio";
+                String email ="";
 
+                //-----------------------------bundle to get email to pass back, keep chain going both ways
+                Bundle dateExtra = getIntent().getExtras();
+                if (dateExtra != null) {
+                    email = dateExtra.getString("EMAIL");
+                    System.out.println(email);
+
+                }
+
+                //-----------------------------PASS back to calendar activity, pass room selected and email
                 Intent i = new Intent(CardioRmActivity.this, CalendarActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("KEY", room);
+                extras.putString("EMAIL", email);
                 i.putExtras(extras);
                 startActivity(i);
 
