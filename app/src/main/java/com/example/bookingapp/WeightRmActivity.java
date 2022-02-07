@@ -29,7 +29,7 @@ public class WeightRmActivity extends AppCompatActivity {
         tvDate = findViewById(R.id.tvDate);
         btn_9 = findViewById(R.id.btn_9);
 
-        String room = "WeightRm";
+        String room = "WeightRm";  //-----------------------------------------------------insert
 
         //fetches the date passed in from calendar activity
         Bundle dateExtra = getIntent().getExtras();
@@ -79,8 +79,6 @@ public class WeightRmActivity extends AppCompatActivity {
 
 
                 String time = "9";   //---------------------------------------------------for insert
-
-
             ////-----------------------------------
                 //This code will need to be called in each button in order
                 // to get the the bundled information
