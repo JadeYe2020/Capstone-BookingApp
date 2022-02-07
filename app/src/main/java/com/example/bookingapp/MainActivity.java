@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
         btn_create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             //get email saved in var------------------------------------------------------
                             String email = et_email.getText().toString();
                             //check for admin
-                            checkAccessLevel(authResult.getUser().getUid(), email);
+                            checkAccessLevel(authResult.getUser().getUid(), email);  //--------pass to auth function
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
