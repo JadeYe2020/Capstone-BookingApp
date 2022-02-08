@@ -4,27 +4,36 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class WeightRmActivity extends AppCompatActivity {
 
     Button btn_prev, btn_9;
     TextView tvDate;
-
+    database db=new database(WeightRmActivity.this);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weights_rm);
-
+        db.Connect();
         btn_prev = findViewById(R.id.btn_prev);
         tvDate = findViewById(R.id.tvDate);
         btn_9 = findViewById(R.id.btn_9);
@@ -78,7 +87,8 @@ public class WeightRmActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                String time = "9";   //---------------------------------------------------for insert
+
+                String time = "10:00:00";   //---------------------------------------------------for insert
             ////-----------------------------------
                 //This code will need to be called in each button in order
                 // to get the the bundled information
@@ -89,7 +99,16 @@ public class WeightRmActivity extends AppCompatActivity {
                     tvDate.setText(date);
                     String email = dateExtra.getString("EMAIL");  //-----------------for insert
                     System.out.println(email);
+                    String dateFormat=date.replaceAll("/","-");
 
+                    Log.e("tag",date);
+                    Log.e("tag",email);
+                    //db.addTable(email,room,dateFormat,time);
+                    //db.mQuery();
+                    int count=db.count(room);
+//                    String count1=""+count;
+//                    Log.e("tag",count1);
+                    System.out.println(count);
                 }
                 ////-------------------------------
 
@@ -106,4 +125,6 @@ public class WeightRmActivity extends AppCompatActivity {
 
 
     }
+
+
 }
