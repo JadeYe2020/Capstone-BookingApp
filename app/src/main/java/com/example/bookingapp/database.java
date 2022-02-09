@@ -30,9 +30,9 @@ public class database {
 
                 try {
 
-                    Class.forName(driver);// 动态加载类
+                    Class.forName(driver);
 
-                    connection = DriverManager.getConnection("jdbc:mysql://192.168.0.6:3306/redteam?useUnicode=" +
+                    connection = DriverManager.getConnection("jdbc:mysql://192.168.0.7:3306/redteam?useUnicode=" +
 
                                     "true&characterEncoding=utf8",
 
@@ -64,7 +64,7 @@ public class database {
 
         final String SQL = "select date from booking";
 
-        final String[] date = new String[10];
+        final String[] date = new String[20];
 
         new Thread(new Runnable() {
 
@@ -81,7 +81,7 @@ public class database {
                     while (resultSet.next()) {
 
                         date[i] = resultSet.getString("date");
-                        Log.d(String.valueOf(this), "name：" + date[i]);
+                        Log.d(String.valueOf(this), "date：" + date[i]);
                         i++;
                     }
 
@@ -137,6 +137,11 @@ public class database {
 
                 try {
 
+                    connection = DriverManager.getConnection("jdbc:mysql://192.168.0.7:3306/redteam?useUnicode=" +
+
+                                    "true&characterEncoding=utf8",
+
+                            "gymCustomer", "LY009cOrPtiPCe6u");
                     Statement statement =connection.createStatement();
 
                     ResultSet resultSet = statement.executeQuery(SQL);

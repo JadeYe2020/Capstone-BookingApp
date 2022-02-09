@@ -34,11 +34,14 @@ public class WeightRmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weights_rm);
         db.Connect();
+
         btn_prev = findViewById(R.id.btn_prev);
         tvDate = findViewById(R.id.tvDate);
         btn_9 = findViewById(R.id.btn_9);
 
         String room = "WeightRm";  //-----------------------------------------------------insert
+
+
 
         //fetches the date passed in from calendar activity
         Bundle dateExtra = getIntent().getExtras();
@@ -80,7 +83,7 @@ public class WeightRmActivity extends AppCompatActivity {
 
         //this can be used to query DB to determine if a button should be visible (not at room limit)
         //or if the buttons should be hidden (room limit has been reached)
-        loadWeightRmTimeSlots();
+       // loadWeightRmTimeSlots(room);
 
         btn_9.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +91,7 @@ public class WeightRmActivity extends AppCompatActivity {
 
 
 
-                String time = "10:00:00";   //---------------------------------------------------for insert
+                String time = "09:00:00";   //---------------------------------------------------for insert
             ////-----------------------------------
                 //This code will need to be called in each button in order
                 // to get the the bundled information
@@ -103,12 +106,12 @@ public class WeightRmActivity extends AppCompatActivity {
 
                     Log.e("tag",date);
                     Log.e("tag",email);
-                    //db.addTable(email,room,dateFormat,time);
-                    //db.mQuery();
-                    int count=db.count(room);
+                    db.addTable(email,room,dateFormat,time);
+
+
 //                    String count1=""+count;
 //                    Log.e("tag",count1);
-                    System.out.println(count);
+//                    System.out.println(count);
                 }
                 ////-------------------------------
 
@@ -118,10 +121,14 @@ public class WeightRmActivity extends AppCompatActivity {
 
     }
 
-    private void loadWeightRmTimeSlots() {
+    private void loadWeightRmTimeSlots(String room) {
+        int count=db.count(room);
+            System.out.println(count);
+            if(count>1){
+                btn_9.setEnabled(false);
 
 
-
+        }
 
 
     }
