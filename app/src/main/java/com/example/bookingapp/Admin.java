@@ -21,7 +21,7 @@ public class Admin extends AppCompatActivity {
     Button btn_logout_admin, btn_cardio, btn_weight, btn_yoga;
     FirebaseAuth fbAuth;
     CalendarView calendarView2;
-    TextView tv_date;
+    TextView tv_date;  ///
 
 
     @Override
