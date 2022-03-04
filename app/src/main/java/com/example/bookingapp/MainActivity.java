@@ -132,10 +132,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(documentSnapshot.getString("isUser") != null){
 
+                    String name =  documentSnapshot.getString("Name");
+                    System.out.println("From main");
+
                     //send to main dashboard activity
                     Intent i = new Intent(MainActivity.this, Dashboard.class);
                     Bundle emailExtra = new Bundle();
                     emailExtra.putString("EMAIL",email);
+                    emailExtra.putString("NAME",name);
                     i.putExtras(emailExtra);
                     startActivity(i);
 

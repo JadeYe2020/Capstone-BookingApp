@@ -94,9 +94,10 @@ public class CalendarActivity extends AppCompatActivity {
                     if (extras != null) {
                         String roomName = extras.getString("KEY");
                         String email = extras.getString("EMAIL");
+                        String name = extras.getString("NAME");
 
-                        System.out.println("calendar");
-                        System.out.println(email);
+                        System.out.println("From calendar");
+                        System.out.println(name);
 
 
                         if (roomName.equals("yoga")) {
@@ -110,6 +111,7 @@ public class CalendarActivity extends AppCompatActivity {
                             Bundle dateExtra = new Bundle();
                             dateExtra.putString("DATE", date);
                             dateExtra.putString("EMAIL", email);
+                            dateExtra.putString("NAME", name);
                             i.putExtras(dateExtra);
                             startActivity(i);
 
@@ -124,6 +126,7 @@ public class CalendarActivity extends AppCompatActivity {
                             Bundle dateExtra = new Bundle();
                             dateExtra.putString("DATE", date);
                             dateExtra.putString("EMAIL", email);
+                            dateExtra.putString("NAME", name);
                             i.putExtras(dateExtra);
                             startActivity(i);
 
@@ -138,6 +141,7 @@ public class CalendarActivity extends AppCompatActivity {
                             Bundle dateExtra = new Bundle();
                             dateExtra.putString("DATE", date);
                             dateExtra.putString("EMAIL", email);
+                            dateExtra.putString("NAME", name);
                             i.putExtras(dateExtra);
                             startActivity(i);
 

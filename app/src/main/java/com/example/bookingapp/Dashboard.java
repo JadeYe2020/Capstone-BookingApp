@@ -46,17 +46,20 @@ public class Dashboard extends AppCompatActivity {
 
                 //grab the email passed in, keep passing it down to the next activity
                 String email = "";
+                String name="";
 
                 Bundle emailExtra = getIntent().getExtras();
                 if (emailExtra != null) {
                     email = emailExtra.getString("EMAIL");
+                    name = emailExtra.getString("NAME");
+
                 }
 
                 Intent i = new Intent(Dashboard.this, SelectRoomActivity.class);
                 emailExtra.putString("EMAIL", email);
+                emailExtra.putString("NAME", name);
                 i.putExtras(emailExtra);
                 startActivity(i);
-
                 //finish();
             }
         });

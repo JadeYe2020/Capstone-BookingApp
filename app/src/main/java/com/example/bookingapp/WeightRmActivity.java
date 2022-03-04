@@ -31,6 +31,7 @@ public class WeightRmActivity extends AppCompatActivity {
     database db=new database(WeightRmActivity.this);
     static String  date="";
     static String email="";
+    static String name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +68,10 @@ public class WeightRmActivity extends AppCompatActivity {
             System.out.println(date);
 
             email = dateExtra.getString("EMAIL");
-            System.out.println(email);
+            name = dateExtra.getString("NAME");
+
+            System.out.println("From weightroom");
+            System.out.println(name);
         }
 
         db.Connect();
@@ -79,11 +83,12 @@ public class WeightRmActivity extends AppCompatActivity {
                 //passes the correct room back to calendar activity, effectively chaining them together
                 String room = "weights";
                 String email="";
+                String name="";
 
                 Bundle dateExtra = getIntent().getExtras();
                 if (dateExtra != null) {
                     email = dateExtra.getString("EMAIL");
-                    System.out.println(email);
+                    name = dateExtra.getString("NAME");
 
                 }
 
@@ -91,6 +96,7 @@ public class WeightRmActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("KEY", room);
                 extras.putString("EMAIL", email);
+                name = dateExtra.getString("NAME");
                 i.putExtras(extras);
                 startActivity(i);
 
@@ -261,6 +267,7 @@ public class WeightRmActivity extends AppCompatActivity {
         Intent i = new Intent(WeightRmActivity.this, Dashboard.class);
         Bundle dateExtra = new Bundle();
         dateExtra.putString("EMAIL", email);
+        name = dateExtra.getString("NAME");
         i.putExtras(dateExtra);
         startActivity(i);
         finish();

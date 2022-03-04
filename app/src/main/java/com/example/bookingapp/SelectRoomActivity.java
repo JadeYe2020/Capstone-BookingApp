@@ -29,10 +29,12 @@ public class SelectRoomActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String email="";
+                String name="";
 
                 Bundle emailExtra = getIntent().getExtras();
                 if (emailExtra != null) {
                     email = emailExtra.getString("EMAIL");
+                    name = emailExtra.getString("NAME");
                 }
 
 
@@ -42,6 +44,7 @@ public class SelectRoomActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("KEY", room);
                 extras.putString("EMAIL", email);
+                extras.putString("NAME", name);
                 i.putExtras(extras);
                 startActivity(i);
 
@@ -55,10 +58,12 @@ public class SelectRoomActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String email="";
+                String name="";
 
                 Bundle emailExtra = getIntent().getExtras();
                 if (emailExtra != null) {
                     email = emailExtra.getString("EMAIL");
+                    name = emailExtra.getString("NAME");
                 }
 
                 String room = "cardio";
@@ -67,6 +72,7 @@ public class SelectRoomActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("KEY", room);
                 extras.putString("EMAIL", email);
+                extras.putString("NAME", name);
                 i.putExtras(extras);
                 startActivity(i);
 
@@ -80,10 +86,13 @@ public class SelectRoomActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String email="";
+                String name="";
 
                 Bundle emailExtra = getIntent().getExtras();
                 if (emailExtra != null) {
                     email = emailExtra.getString("EMAIL");
+                    name = emailExtra.getString("NAME");
+
                 }
 
                 String room = "yoga";
@@ -92,6 +101,7 @@ public class SelectRoomActivity extends AppCompatActivity {
                Bundle extras = new Bundle();
                extras.putString("KEY", room);
                extras.putString("EMAIL", email);
+               extras.putString("NAME", name);
                i.putExtras(extras);
                startActivity(i);
 

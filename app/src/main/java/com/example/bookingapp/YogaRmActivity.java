@@ -19,6 +19,7 @@ public class YogaRmActivity extends AppCompatActivity {
     database db=new database(YogaRmActivity.this);
     static String  date="";
     static String  email="";
+    static String  name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,10 @@ public class YogaRmActivity extends AppCompatActivity {
             System.out.println(date);
 
             email = dateExtra.getString("EMAIL");
-            System.out.println(email);
+            name = dateExtra.getString("NAME");
+
+            System.out.println("From yoga");
+            System.out.println(name);
 
         }
             loadWeightRmTimeSlots(email,room,date);
@@ -62,17 +66,20 @@ public class YogaRmActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String room = "yoga";
                 String email="";
+                String name="";
 
                 Bundle dateExtra = getIntent().getExtras();
                 if (dateExtra != null) {
                     email = dateExtra.getString("EMAIL");
-                    System.out.println(email);
+                    name = dateExtra.getString("NAME");
+                    System.out.println(name);
                 }
 
                 Intent i = new Intent(YogaRmActivity.this, CalendarActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("KEY", room);
                 extras.putString("EMAIL", email);
+                extras.putString("NAME", name);
                 i.putExtras(extras);
                 startActivity(i);
 
@@ -230,6 +237,7 @@ public class YogaRmActivity extends AppCompatActivity {
         Intent i = new Intent(YogaRmActivity.this, Dashboard.class);
         Bundle dateExtra = new Bundle();
         dateExtra.putString("EMAIL", email);
+        dateExtra.putString("NAME", name);
         i.putExtras(dateExtra);
         startActivity(i);
         finish();

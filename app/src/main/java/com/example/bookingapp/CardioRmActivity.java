@@ -4,24 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
 public class CardioRmActivity extends AppCompatActivity {
 
-    Button btn_prev, btn_9,btn_10,btn_11,btn_12,btn_1,btn_2,btn_3,btn_4,btn_5,btn_6,btn_7,btn_8;
+    Button btn_prev, btn_9, btn_10, btn_11, btn_12, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8;
     TextView tvDate;
     FirebaseFirestore fbStore;
-    database db=new database(CardioRmActivity.this);
-    static String  date="";
-    static String email="";
+    database db = new database(CardioRmActivity.this);
+    static String date = "";
+    static String email = "";
+    static String name = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +38,7 @@ public class CardioRmActivity extends AppCompatActivity {
         btn_prev = findViewById(R.id.btn_prev);
         tvDate = findViewById(R.id.tvDate);
         btn_9 = findViewById(R.id.btn_9);
-        btn_10=findViewById(R.id.btn_10);
+        btn_10 = findViewById(R.id.btn_10);
         btn_11 = findViewById(R.id.btn_11);
         btn_12 = findViewById(R.id.btn_12);
         btn_1 = findViewById(R.id.btn_1);
@@ -43,32 +51,37 @@ public class CardioRmActivity extends AppCompatActivity {
         btn_8 = findViewById(R.id.btn_8);
         String room = "CardioRm";  //-----------------------------------------------------insert
 
+
         //this fetches the data we sent over with the date in it
         Bundle dateExtra = getIntent().getExtras();
         if (dateExtra != null) {
             date = dateExtra.getString("DATE");
             tvDate.setText(date);
-            System.out.println(date);
-
             email = dateExtra.getString("EMAIL");
-            System.out.println(email);
+            name = dateExtra.getString("NAME");
+
+            System.out.println("From cardio");
+            System.out.println(name);
+
 
         }
         db.Connect();
-        loadWeightRmTimeSlots(email,room,date);
+        loadWeightRmTimeSlots(email, room, date);
 
         btn_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                 String room = "cardio";
-                 String email ="";
+                String room = "cardio";
+                String email = "";
+                String name = "";
 
                 //-----------------------------bundle to get email to pass back, keep chain going both ways
                 Bundle dateExtra = getIntent().getExtras();
                 if (dateExtra != null) {
                     email = dateExtra.getString("EMAIL");
-                    System.out.println(email);
+                    name = dateExtra.getString("NAME");
+
 
                 }
 
@@ -77,13 +90,13 @@ public class CardioRmActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("KEY", room);
                 extras.putString("EMAIL", email);
+                name = dateExtra.getString("NAME");
                 i.putExtras(extras);
                 startActivity(i);
 
                 finish();
             }
         });
-
 
 
         btn_9.setOnClickListener(new View.OnClickListener() {
@@ -198,48 +211,50 @@ public class CardioRmActivity extends AppCompatActivity {
 
     }
 
-    public void loadWeightRmTimeSlots(String email,String room,String date) {
-        HashMap<String,Button> times=new HashMap<String,Button>();
-        times.put("09:00:00",btn_9);
-        times.put("10:00:00",btn_10);
-        times.put("11:00:00",btn_11);
-        times.put("12:00:00",btn_12);
-        times.put("13:00:00",btn_1);
-        times.put("14:00:00",btn_2);
-        times.put("15:00:00",btn_3);
-        times.put("16:00:00",btn_4);
-        times.put("17:00:00",btn_5);
-        times.put("18:00:00",btn_6);
-        times.put("19:00:00",btn_7);
-        times.put("20:00:00",btn_8);
+    public void loadWeightRmTimeSlots(String email, String room, String date) {
+        HashMap<String, Button> times = new HashMap<String, Button>();
+        times.put("09:00:00", btn_9);
+        times.put("10:00:00", btn_10);
+        times.put("11:00:00", btn_11);
+        times.put("12:00:00", btn_12);
+        times.put("13:00:00", btn_1);
+        times.put("14:00:00", btn_2);
+        times.put("15:00:00", btn_3);
+        times.put("16:00:00", btn_4);
+        times.put("17:00:00", btn_5);
+        times.put("18:00:00", btn_6);
+        times.put("19:00:00", btn_7);
+        times.put("20:00:00", btn_8);
         HashMap<String, Integer> bookedCount = db.count(room, date);
 
 
-        for(String key:times.keySet()){
+        for (String key : times.keySet()) {
             int count = 0;
             if (bookedCount.get(key) != null) {
                 count = bookedCount.get(key);
             }
 //            int count=db.count(room,date,key);//Count how many users have reserved this room
 
-            int reserved=db.reserved(email,room,date,key);  //Determine whether the user has made an appointment at this time
-            if(count > 2 ||reserved==1) { // hard code magic number 2 for testing
+            int reserved = db.reserved(email, room, date, key);  //Determine whether the user has made an appointment at this time
+            if (count > 2 || reserved == 1) { // hard code magic number 2 for testing
                 times.get(key).setEnabled(false);
             }
         }
     }
 
-    public void bookingSuccess(){
+    public void bookingSuccess() {
 
-        Toast toast= Toast.makeText(CardioRmActivity.this, "Room booked", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(CardioRmActivity.this, "Room booked", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
         Intent i = new Intent(CardioRmActivity.this, Dashboard.class);
         Bundle dateExtra = new Bundle();
         dateExtra.putString("EMAIL", email);
+        name = dateExtra.getString("NAME");
         i.putExtras(dateExtra);
         startActivity(i);
         finish();
     }
+
 
 }
