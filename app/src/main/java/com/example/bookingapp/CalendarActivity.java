@@ -34,6 +34,9 @@ public class CalendarActivity extends AppCompatActivity {
         btn_next = findViewById(R.id.btn_next);
         btn_prev = findViewById(R.id.btn_prev);
 
+        // show today's date by default
+        tv_date.setText(new SimpleDateFormat("yyyy-MM-dd").format(calendarView.getDate()));
+
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
