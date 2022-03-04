@@ -83,7 +83,15 @@ public class ViewAptsActivity extends AppCompatActivity {
         recyclerViewAdapter = new RecyclerViewAdapter(list);  //PASS the adapter the list
         recyclerView.setAdapter(recyclerViewAdapter);
 
-
+        //Implement Custom Back Navigation. ref: https://developer.android.com/guide/navigation/navigation-custom-back#implement_custom_back_navigation
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+                finish();
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
 
 
     }

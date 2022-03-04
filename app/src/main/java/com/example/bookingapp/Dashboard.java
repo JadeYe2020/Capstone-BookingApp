@@ -80,7 +80,8 @@ public class Dashboard extends AppCompatActivity {
                 i.putExtras(emailExtra);
                 startActivity(i);
 
-                finish();
+                // in order to nav back from the view appointments page, not need to finish the activity here
+//                finish();
 
             }
         });
