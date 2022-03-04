@@ -45,7 +45,7 @@ public class SelectRoomActivity extends AppCompatActivity {
                 i.putExtras(extras);
                 startActivity(i);
 
-                finish();
+//                finish();
 
             }
         });
@@ -70,7 +70,7 @@ public class SelectRoomActivity extends AppCompatActivity {
                 i.putExtras(extras);
                 startActivity(i);
 
-                finish();
+//                finish();
 
             }
         });
@@ -95,7 +95,7 @@ public class SelectRoomActivity extends AppCompatActivity {
                i.putExtras(extras);
                startActivity(i);
 
-                finish();
+//                finish();
 
             }
         });

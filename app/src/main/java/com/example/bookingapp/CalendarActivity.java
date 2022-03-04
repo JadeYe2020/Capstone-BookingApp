@@ -109,7 +109,7 @@ public class CalendarActivity extends AppCompatActivity {
                             i.putExtras(dateExtra);
                             startActivity(i);
 
-                            finish();
+//                            finish();
 
                         } else if (roomName.equals("weights")) {
 
@@ -123,7 +123,7 @@ public class CalendarActivity extends AppCompatActivity {
                             i.putExtras(dateExtra);
                             startActivity(i);
 
-                            finish();
+//                            finish();
                         } else if (roomName.equals("cardio")) {
 
                             String date = (String) tv_date.getText();
@@ -137,7 +137,7 @@ public class CalendarActivity extends AppCompatActivity {
                             i.putExtras(dateExtra);
                             startActivity(i);
 
-                            finish();
+//                            finish();
                         }
                     }
 

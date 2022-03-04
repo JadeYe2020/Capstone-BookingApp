@@ -57,7 +57,7 @@ public class Dashboard extends AppCompatActivity {
                 i.putExtras(emailExtra);
                 startActivity(i);
 
-                finish();
+                //finish();
             }
         });
 
