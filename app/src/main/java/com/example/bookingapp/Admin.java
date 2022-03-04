@@ -38,11 +38,14 @@ public class Admin extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         tv_date = findViewById(R.id.tv_date);
 
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        tv_date.setText(sdf.format(calendarView2.getDate()));
+
         calendarView2.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
 
-                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
                 String sDate = sdf.format(calendar.getTime());
@@ -65,7 +68,7 @@ public class Admin extends AppCompatActivity {
                 i.putExtras(emailExtra);
                 startActivity(i);
 
-                finish();
+//                finish();
             }
         });
 
@@ -83,7 +86,7 @@ public class Admin extends AppCompatActivity {
                 i.putExtras(emailExtra);
                 startActivity(i);
 
-                finish();
+//                finish();
             }
         });
 
@@ -101,7 +104,7 @@ public class Admin extends AppCompatActivity {
                 i.putExtras(emailExtra);
                 startActivity(i);
 
-                finish();
+//                finish();
             }
         });
 
