@@ -34,15 +34,16 @@ public class CalendarActivity extends AppCompatActivity {
         btn_next = findViewById(R.id.btn_next);
         btn_prev = findViewById(R.id.btn_prev);
 
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         // show today's date by default
-        tv_date.setText(new SimpleDateFormat("yyyy-MM-dd").format(calendarView.getDate()));
+        tv_date.setText(sdf.format(calendarView.getDate()));
 
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
 
-                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
                 String sDate = sdf.format(calendar.getTime());
