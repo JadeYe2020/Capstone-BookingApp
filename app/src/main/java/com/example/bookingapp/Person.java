@@ -6,14 +6,15 @@ public class Person {
     private String email;
     private String room;
     private String time;
-
+    private String date;
     public Person(){};//empty constructor
 
-    public Person(String name, String email, String room, String time) {
+    public Person(String name, String email, String room, String time,String date) {
         this.name=name;
         this.email=email;
         this.room=room;
         this.time=time;
+        this.date=time;
     }
 
     public String getName(){
@@ -42,5 +43,12 @@ public class Person {
     }
     public void setTime(String time){
         this.time = time;
+    }
+
+    public String getDate(){
+        return date;
+    }
+    public void setDate(String date){
+        this.date = date;
     }
 }

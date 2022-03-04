@@ -24,15 +24,7 @@ public class ViewAptsActivity extends AppCompatActivity {
     //temp list to test class  --- THIS IS WHERE WILL WILL NEED TO DO DB WORK --> query if they have admin privilege or not,
     //then do the return for the email of the user if not admin, if admin, query all appointments and return
 
-    Person person1 = new Person("Zac", "zac@email.com", "Yoga", "9");
-    Person person2 = new Person("Sal", "sal@email.com", "Weight", "10");
-    Person person3 = new Person("Sus", "sus@email.com", "Cardio", "10");
-    Person person4 = new Person("Zac", "ck@email.com", "Weight", "9");
-    Person person5 = new Person("Sal", "sal@email.com", "Weight", "10");
-    Person person6 = new Person("Sus", "sus@email.com", "Cardio", "10");
-    Person person7 = new Person("Zac", "ck@email.com", "Cardio", "9");
-    Person person8 = new Person("Sal", "sal@email.com", "Weight", "10");
-    Person person9 = new Person("Sus", "sus@email.com", "Cardio", "10");
+
 
 
 

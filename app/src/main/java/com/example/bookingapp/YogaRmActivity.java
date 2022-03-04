@@ -90,7 +90,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "9:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -99,7 +99,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String time = "10:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
 
             }
@@ -109,7 +109,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "11:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -118,7 +118,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "12:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -127,7 +127,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "13:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -136,7 +136,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "14:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -145,7 +145,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "15:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -154,7 +154,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "16:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -163,7 +163,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "17:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -172,7 +172,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "18:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -181,7 +181,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "19:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
@@ -190,7 +190,7 @@ public class YogaRmActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String time = "20:00:00";
-                db.insert(email, room, date, time);
+                db.insert(email, room, date, time,name);
                 bookingSuccess();
             }
 
