@@ -64,7 +64,7 @@ public class Admin extends AppCompatActivity {
                 Bundle emailExtra = new Bundle();
                 emailExtra.putString("EMAIL", email);
                 emailExtra.putString("DATE", date);
-                emailExtra.putString("ROOM", "cardio");
+                emailExtra.putString("ROOM", "CardioRm");
                 i.putExtras(emailExtra);
                 startActivity(i);
 
@@ -82,7 +82,7 @@ public class Admin extends AppCompatActivity {
                 Bundle emailExtra = new Bundle();
                 emailExtra.putString("EMAIL", email);
                 emailExtra.putString("DATE", date);
-                emailExtra.putString("ROOM", "yoga");
+                emailExtra.putString("ROOM", "YogaRm");
                 i.putExtras(emailExtra);
                 startActivity(i);
 
