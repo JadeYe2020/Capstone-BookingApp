@@ -167,8 +167,8 @@ public class database {
             public void run() {
 
 
-
-                String SQL ="select count(*) as idCount from booking where email='"+email+"' and  room = '"+room+"' and date ='"+date+"' and time ='"+time+"'";
+                String SQL ="select count(*) as idCount from booking where email='"+email+"' and date ='"+date+"' and time ='"+time+"'";
+//                String SQL ="select count(*) as idCount from booking where email='"+email+"' and  room = '"+room+"' and date ='"+date+"' and time ='"+time+"'";
 
                 try {
                     if (connection==null){
