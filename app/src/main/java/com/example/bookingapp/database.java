@@ -64,20 +64,27 @@ public class database {
     }
 
 
-    public void insert(String email,String room, String date,String time){
+    public void insert(String email,String room, String date,String time,String name){
 
         new Thread(new Runnable() {
             @Override
 
             public void run() {
 
-                String SQL ="insert into booking values( '"+email+"','"+room+"','"+date+"','"+time+"');";
+                String SQL ="insert into booking values( '"+email+"','"+room+"','"+date+"','"+time+"','"+name+"');";
+               // String SQL="select * from booking where name='Yue'";
 
                 try {
 
                     Statement statement =connection.createStatement();
 
                     statement.execute(SQL);
+                    //ResultSet resultSet = statement.executeQuery(SQL);
+
+//                    while (resultSet.next()) {
+//
+//                        System.out.println(resultSet.getString(5));
+//                    }
 
                 }catch (SQLException e) {
 
@@ -253,12 +260,13 @@ public class database {
                         personData[1] = resultSet.getString(2);
                         personData[2] = resultSet.getString(3);
                         personData[3] = resultSet.getString(4);
-
+                        personData[4] = resultSet.getString(5);
                         Person person=new Person();
                         person.setEmail(personData[0]);
                         person.setRoom(personData[1]);
-                        person.setName("TestUser");
+                        person.setName(personData[4]);
                         person.setTime(personData[3]);
+                        person.setDate(personData[2]);
                         people.add(person);    
 
 
@@ -324,12 +332,13 @@ public class database {
                         personData[1] = resultSet.getString(2);
                         personData[2] = resultSet.getString(3);
                         personData[3] = resultSet.getString(4);
-
+                        personData[4] = resultSet.getString(5);
                         Person person=new Person();
                         person.setEmail(personData[0]);
                         person.setRoom(personData[1]);
-                        person.setName("TestUser");
+                        person.setName(personData[4]);
                         person.setTime(personData[3]);
+                        person.setDate(personData[2]);
                         people.add(person);
                         System.out.println("date and room"+personData[0]);
 
