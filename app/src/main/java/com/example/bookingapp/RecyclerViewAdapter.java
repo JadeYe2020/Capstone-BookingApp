@@ -45,6 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
         holder.tvEmail.setText(list.get(position).getEmail());
         holder.tvRoom.setText(list.get(position).getRoom());
         holder.tvTime.setText(list.get(position).getTime());
+        holder.tvDateP.setText(list.get(position).getDate());
     }
 
     @Override
@@ -56,7 +57,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
 
-         TextView tvName, tvEmail, tvRoom, tvTime;
+         TextView tvName, tvEmail, tvRoom, tvTime, tvDateP;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
             tvEmail = itemView.findViewById(R.id.tvEmail);
             tvRoom = itemView.findViewById(R.id.tvRoom);
             tvTime = itemView.findViewById(R.id.tvTime);
+            tvDateP = itemView.findViewById(R.id.tvDateP);
         }
     }
 }
