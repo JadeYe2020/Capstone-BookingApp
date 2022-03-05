@@ -1,9 +1,12 @@
 package com.example.bookingapp;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,11 +44,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
         //this is where we assign the value to the person view----> or this is where we would assign value from DB
 
+        String email =list.get(position).getEmail();
+        String room = list.get(position).getRoom();
+        String time = list.get(position).getTime();
+        String date = list.get(position).getDate();
+
         holder.tvName.setText(list.get(position).getName());
-        holder.tvEmail.setText(list.get(position).getEmail());
-        holder.tvRoom.setText(list.get(position).getRoom());
-        holder.tvTime.setText(list.get(position).getTime());
-        holder.tvDateP.setText(list.get(position).getDate());
+        holder.tvEmail.setText(email);
+        holder.tvRoom.setText(room);
+        holder.tvTime.setText(time);
+        holder.tvDateP.setText(date);
+
+
+
+        holder.btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = holder.btnCancel.getContext();
+                database db =new database(context);
+                db.delete(email, room, date, time);
+                Toast.makeText(context, "Booking cancelled.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -58,6 +78,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
     {
 
          TextView tvName, tvEmail, tvRoom, tvTime, tvDateP;
+         Button btnCancel;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,6 +89,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
             tvRoom = itemView.findViewById(R.id.tvRoom);
             tvTime = itemView.findViewById(R.id.tvTime);
             tvDateP = itemView.findViewById(R.id.tvDateP);
+
+            btnCancel = itemView.findViewById(R.id.cancel_btn);
         }
     }
 }

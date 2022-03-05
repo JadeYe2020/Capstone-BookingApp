@@ -98,6 +98,33 @@ public class database {
 
     }
 
+    public void delete(String email,String room, String date,String time){
+
+        new Thread(new Runnable() {
+            @Override
+
+            public void run() {
+
+                String SQL ="DELETE FROM booking WHERE email='"+email+"' and room = '"+room+"' and date ='"+date+"' and time ='"+time+"';";
+
+                try {
+
+                    Statement statement =connection.createStatement();
+
+                    statement.execute(SQL);
+
+
+                }catch (SQLException e) {
+
+                    Log.d("delete","delete failed"+e.toString());
+
+                }
+            }
+
+        }).start();
+
+    }
+
     public HashMap<String, Integer> count(String room, String date) {
         HashMap<String, Integer> bookedCount = new HashMap();
         String[] time = new String[1];
