@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
                             docRef.set(userInfo); //save to DB
 
 
-                            startActivity(new Intent(getApplicationContext(), Dashboard.class));  //currently sending everyone to main
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                             finish(); // this stops users from going back to register activity
                         }
