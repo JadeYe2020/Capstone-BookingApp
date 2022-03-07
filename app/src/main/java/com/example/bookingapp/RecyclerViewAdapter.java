@@ -1,6 +1,7 @@
 package com.example.bookingapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
                 database db =new database(context);
                 db.delete(email, room, date, time);
                 Toast.makeText(context, "Booking cancelled.", Toast.LENGTH_LONG).show();
+
+                // refresh the list
+                list.remove(holder.getAdapterPosition());
+                notifyDataSetChanged();
             }
         });
     }
