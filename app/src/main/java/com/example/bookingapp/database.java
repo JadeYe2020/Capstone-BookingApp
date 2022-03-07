@@ -270,7 +270,7 @@ public class database {
 
             public void run() {
 
-                String SQL = "SELECT  * FROM booking WHERE email ='"+email+"' and date>'"+today+"';";
+                String SQL = "SELECT  * FROM booking WHERE email ='"+email+"' and date>='"+today+"';";
 
 
 
