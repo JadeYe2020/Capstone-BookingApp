@@ -10,7 +10,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -257,13 +260,17 @@ public class database {
         final String[] personData = new String[5];
         List<Person> people = new ArrayList<>();
 
-         SelectRunnable myRunnable=new SelectRunnable(){
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        long timeGetTime =new Date().getTime();  //get current date
+        String today = sdf.format(timeGetTime);
+
+        SelectRunnable myRunnable=new SelectRunnable(){
 
             @Override
 
             public void run() {
 
-                String SQL = "SELECT  * FROM booking WHERE email ='"+email+"';";
+                String SQL = "SELECT  * FROM booking WHERE email ='"+email+"' and date>'"+today+"';";
 
 
 
