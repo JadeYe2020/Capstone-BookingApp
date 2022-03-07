@@ -25,5 +25,6 @@
     <string name="btn_8">8 PM</string>
     <string name="btn_next">Next</string>
     <string name="tvDateP">Date</string>
+    <string name="hint_confirm">Confirm Password</string>
 
 </resources>
