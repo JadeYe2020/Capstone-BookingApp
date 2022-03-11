@@ -45,7 +45,7 @@ public class ViewAptsActivity extends AppCompatActivity {
             date = emailExtra.getString("DATE");
             room= emailExtra.getString("ROOM");
 
-            System.out.println("date and room"+date+room);
+
         }
 
 
@@ -56,11 +56,12 @@ public class ViewAptsActivity extends AppCompatActivity {
             list=db.usersList(email);
 
         }else {
+            System.out.println("date and room: "+ date + " " +room);
+
             //this is for admins where all appointments are shown based off room and day selected
             //FILTERING will need to be applied when the database is queried...for prototype code
             //just adding all the people to the list
             list=db.adminList(date,room);
-
         }
 
 
