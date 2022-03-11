@@ -2,10 +2,11 @@ package com.example.bookingapp;
 
 import java.util.HashMap;
 
-public class MyRunnable implements Runnable {
+public class CustomRunnable implements Runnable {
 
     private volatile int count;
     private volatile HashMap<String, Integer> map;
+
     @Override
     public void run() {
         count = 0;
