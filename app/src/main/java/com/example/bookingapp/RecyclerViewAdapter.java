@@ -1,7 +1,6 @@
 package com.example.bookingapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +17,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
 
     //THIS will be the list of people objects
-    List<Person> list;
+    List<Booking> list;
 
 
-    public RecyclerViewAdapter(List<Person> list)
+    public RecyclerViewAdapter(List<Booking> list)
     {
         this.list = list;  //get the data from the list
     }
@@ -62,7 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
             @Override
             public void onClick(View v) {
                 Context context = holder.btnCancel.getContext();
-                database db =new database(context);
+                Database db =new Database(context);
                 db.delete(email, room, date, time);
                 Toast.makeText(context, "Booking cancelled.", Toast.LENGTH_LONG).show();
 

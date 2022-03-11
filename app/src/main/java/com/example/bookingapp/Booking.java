@@ -1,15 +1,15 @@
 package com.example.bookingapp;
 
-public class Person {
+public class Booking {
 
     private String name;
     private String email;
     private String room;
     private String time;
     private String date;
-    public Person(){};//empty constructor
+    public Booking(){};//empty constructor
 
-    public Person(String name, String email, String room, String time,String date) {
+    public Booking(String name, String email, String room, String time, String date) {
         this.name=name;
         this.email=email;
         this.room=room;

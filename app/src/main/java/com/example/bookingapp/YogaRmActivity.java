@@ -16,7 +16,7 @@ public class YogaRmActivity extends AppCompatActivity {
 
     Button btn_prev,btn_9,btn_10,btn_11,btn_12,btn_1,btn_2,btn_3,btn_4,btn_5,btn_6,btn_7,btn_8;
     TextView tvDate;
-    database db=new database(YogaRmActivity.this);
+    Database db=new Database(YogaRmActivity.this);
     static String  date="";
     static String  email="";
     static String  name="";

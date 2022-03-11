@@ -1,20 +1,19 @@
 package com.example.bookingapp;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class SelectRunnable  implements Runnable{
 
-    private volatile List<Person> person;
+    private volatile List<Booking> bookings;
 
     @Override
     public void run() {
-        person=null;
+        bookings =null;
     }
 
     // to get value
-    public List<Person> getValue() {
-        return person;
+    public List<Booking> getList() {
+        return bookings;
     }
 
 }

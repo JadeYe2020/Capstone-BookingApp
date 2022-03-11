@@ -1,9 +1,7 @@
 package com.example.bookingapp;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +14,7 @@ public class ViewAptsActivity extends AppCompatActivity {
 
     //bring in recyclerView
     private RecyclerView recyclerView;
-    database db=new database(ViewAptsActivity.this);
+    Database db=new Database(ViewAptsActivity.this);
     //bring in layout manager
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
@@ -29,8 +27,8 @@ public class ViewAptsActivity extends AppCompatActivity {
 
 
     //instantiate list to hold our people;
-    List<Person> list = new ArrayList<>();
-    List<Person> list1 = new ArrayList<>();
+    List<Booking> list = new ArrayList<>();
+    List<Booking> list1 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +53,13 @@ public class ViewAptsActivity extends AppCompatActivity {
 
 
         if (!email.equals("admin@email.com")){  /// so any user would fall under here
-            list=db.select(email);
+            list=db.usersList(email);
 
         }else {
             //this is for admins where all appointments are shown based off room and day selected
             //FILTERING will need to be applied when the database is queried...for prototype code
             //just adding all the people to the list
-            list=db.adminSelect(date,room);
+            list=db.adminList(date,room);
 
         }
 
