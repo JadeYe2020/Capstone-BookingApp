@@ -13,7 +13,7 @@ public class CustomRunnable implements Runnable {
     }
 
     // to get value
-    public int getValue() {
+    public int getCount() {
         return count;
     }
 
