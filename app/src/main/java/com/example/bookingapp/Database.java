@@ -202,7 +202,7 @@ public class Database {
             }
 
             public int getCount() {
-                String count1 = "counted in getValue: " + count[0];
+                String count1 = "counted in getCount: " + count[0];
                 Log.d(String.valueOf(this), count1);
 
                 return count[0];
