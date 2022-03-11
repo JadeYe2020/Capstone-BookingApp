@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ public class WeightRmActivity extends AppCompatActivity {
     static String date = "";
     static String email = "";
     static String name = "";
+
+    String room = "WeightRm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +44,12 @@ public class WeightRmActivity extends AppCompatActivity {
         btn_6 = findViewById(R.id.btn_6);
         btn_7 = findViewById(R.id.btn_7);
         btn_8 = findViewById(R.id.btn_8);
-        String room = "WeightRm";
 
         //fetches the date passed in from calendar activity
         Bundle dateExtra = getIntent().getExtras();
         if (dateExtra != null) {
             date = dateExtra.getString("DATE");
             tvDate.setText(date);
-            System.out.println(date);
 
             email = dateExtra.getString("EMAIL");
             name = dateExtra.getString("NAME");
@@ -84,130 +86,75 @@ public class WeightRmActivity extends AppCompatActivity {
 //            }
 //        });
 
-        //this can be used to query DB to determine if a button should be visible (not at room limit)
-        //or if the buttons should be hidden (room limit has been reached)
+        btn_1.setOnClickListener(onSlotClicked);
+        btn_2.setOnClickListener(onSlotClicked);
+        btn_3.setOnClickListener(onSlotClicked);
+        btn_4.setOnClickListener(onSlotClicked);
+        btn_5.setOnClickListener(onSlotClicked);
+        btn_6.setOnClickListener(onSlotClicked);
+        btn_7.setOnClickListener(onSlotClicked);
+        btn_8.setOnClickListener(onSlotClicked);
+        btn_9.setOnClickListener(onSlotClicked);
+        btn_10.setOnClickListener(onSlotClicked);
+        btn_11.setOnClickListener(onSlotClicked);
+        btn_12.setOnClickListener(onSlotClicked);
 
+    } // end of onCreate
 
-        btn_9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "9:00:00";   //---------------------------------------------------for insert
-                db.insert(email, room, date, time, name);
-
-                Toast.makeText(WeightRmActivity.this, "Room booked", Toast.LENGTH_SHORT).show();
-
-                Intent i = new Intent(WeightRmActivity.this, Dashboard.class);
-                Bundle dateExtra = new Bundle();
-                dateExtra.putString("EMAIL", email);
-                i.putExtras(dateExtra);
-                startActivity(i);
-
-                finish();
+    public View.OnClickListener onSlotClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String time;
+            switch (v.getId()) {
+                case R.id.btn_9:
+                    time = "9:00:00";
+                    break;
+                case R.id.btn_10:
+                    time = "10:00:00";
+                    break;
+                case R.id.btn_11:
+                    time = "11:00:00";
+                    break;
+                case R.id.btn_12:
+                    time = "12:00:00";
+                    break;
+                case R.id.btn_1:
+                    time = "13:00:00";
+                    break;
+                case R.id.btn_2:
+                    time = "14:00:00";
+                    break;
+                case R.id.btn_3:
+                    time = "15:00:00";
+                    break;
+                case R.id.btn_4:
+                    time = "16:00:00";
+                    break;
+                case R.id.btn_5:
+                    time = "17:00:00";
+                    break;
+                case R.id.btn_6:
+                    time = "18:00:00";
+                    break;
+                case R.id.btn_7:
+                    time = "19:00:00";
+                    break;
+                case R.id.btn_8:
+                    time = "20:00:00";
+                    break;
+                default:
+                    time = "";
+                    Log.d("onSlotClicked", "cannot get the time right");
+                    break;
             }
 
-        });
-        btn_10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String time = "10:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-        });
+            db.insert(email, room, date, time, name);
+            bookingSuccess();
+        }
+    };
 
-        btn_11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "11:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "12:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "13:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "14:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "15:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "16:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "17:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "18:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "19:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-        btn_8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String time = "20:00:00";
-                db.insert(email, room, date, time, name);
-                bookingSuccess();
-            }
-
-        });
-
-    }
-
+    //this can be used to query DB to determine if a button should be visible (not at room limit)
+    //or if the buttons should be hidden (room limit has been reached)
     public void loadWeightRmTimeSlots(String email, String room, String date) {
         HashMap<String, Button> times = new HashMap<String, Button>();
         times.put("09:00:00", btn_9);
@@ -253,7 +200,7 @@ public class WeightRmActivity extends AppCompatActivity {
         Intent i = new Intent(WeightRmActivity.this, Dashboard.class);
         Bundle dateExtra = new Bundle();
         dateExtra.putString("EMAIL", email);
-        name = dateExtra.getString("NAME");
+        dateExtra.putString("NAME", name);
         i.putExtras(dateExtra);
         startActivity(i);
         finish();
