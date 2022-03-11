@@ -133,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 if(documentSnapshot.getString("isUser") != null){
 
                     String name =  documentSnapshot.getString("Name");
-                    System.out.println("From main");
+                    System.out.println("'name' from main");
+                    System.out.println(name);
 
                     //send to main dashboard activity
                     Intent i = new Intent(MainActivity.this, Dashboard.class);

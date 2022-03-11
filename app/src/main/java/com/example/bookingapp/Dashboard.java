@@ -53,6 +53,8 @@ public class Dashboard extends AppCompatActivity {
                     email = emailExtra.getString("EMAIL");
                     name = emailExtra.getString("NAME");
 
+                    System.out.println("'name' from dashboard");
+                    System.out.println(name);
                 }
 
                 Intent i = new Intent(Dashboard.this, SelectRoomActivity.class);
@@ -78,8 +80,8 @@ public class Dashboard extends AppCompatActivity {
 
                 Intent i = new Intent(Dashboard.this, ViewAptsActivity.class);
                 emailExtra.putString("EMAIL", email);
-                emailExtra.putString("ROOM", "");
-                emailExtra.putString("DATE", "");
+//                emailExtra.putString("ROOM", "");
+//                emailExtra.putString("DATE", "");
                 i.putExtras(emailExtra);
                 startActivity(i);
 

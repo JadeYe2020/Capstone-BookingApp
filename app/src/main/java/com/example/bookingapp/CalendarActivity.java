@@ -96,7 +96,7 @@ public class CalendarActivity extends AppCompatActivity {
                         String email = extras.getString("EMAIL");
                         String name = extras.getString("NAME");
 
-                        System.out.println("From calendar");
+                        System.out.println("'name' from calendar");
                         System.out.println(name);
 
 
