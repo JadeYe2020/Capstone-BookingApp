@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_gradient_red_trainer_fitness_instagram_post"
+
     tools:context=".Dashboard">
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_logout_user"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -21,6 +24,7 @@
         app:layout_constraintVertical_bias="0.7" />
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_book"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -35,6 +39,7 @@
         app:layout_constraintVertical_bias="0.81" />
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_view_apts"
         android:layout_width="match_parent"
         android:layout_height="100dp"

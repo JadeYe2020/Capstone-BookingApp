@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_gradient_red_trainer_fitness_instagram_post"
+
     tools:context=".Admin">
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_logout_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +21,7 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <CalendarView
+        android:background="@drawable/shadow_button"
         android:id="@+id/calendarView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +33,7 @@
         app:layout_constraintVertical_bias="0.00999999" />
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_cardio"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
@@ -41,6 +46,7 @@
         app:layout_constraintVertical_bias="0.208" />
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_weight"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
@@ -53,6 +59,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
+        android:background="@drawable/shadow_button"
         android:id="@+id/btn_yoga"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
