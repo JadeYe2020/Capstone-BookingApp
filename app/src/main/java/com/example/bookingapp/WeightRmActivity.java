@@ -200,7 +200,7 @@ public class WeightRmActivity extends AppCompatActivity {
         Intent i = new Intent(WeightRmActivity.this, Dashboard.class);
         Bundle dateExtra = new Bundle();
         dateExtra.putString("EMAIL", email);
-        dateExtra.putString("NAME", name);
+        name= dateExtra.getString("NAME");
         i.putExtras(dateExtra);
         startActivity(i);
         finish();
