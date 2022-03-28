@@ -41,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_BookingApp);
         setContentView(R.layout.activity_main);
 
-
-
-
         btn_welcome = findViewById(R.id.btn_login);
 
 
